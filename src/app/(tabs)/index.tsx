@@ -7,6 +7,8 @@ export default function Home() {
       style={{
         flex: 1,
         backgroundColor: theme.dark.colors.secondary,
+        justifyContent: "center",
+        alignItems: "center",
       }}
     >
       <Text

@@ -28,7 +28,7 @@ export default function Layout() {
         flex: 1,
       }}
     >
-      <StatusBar backgroundColor="white" />
+      <StatusBar style="inverted" />
       <Slot />
     </GestureHandlerRootView>
   );
