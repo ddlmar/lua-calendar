@@ -1,39 +1,35 @@
-import { Tabs } from "expo-router";
-import React from "react";
-import { MaterialIcons } from "@expo/vector-icons";
+import { Slot, SplashScreen } from "expo-router";
+import { StatusBar } from "expo-status-bar";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
 
-const Layout: React.FC = () => {
+import {
+  useFonts,
+  Roboto_400Regular,
+  Roboto_500Medium,
+  Roboto_700Bold,
+} from "@expo-google-fonts/roboto";
+
+SplashScreen.preventAutoHideAsync();
+
+export default function Layout() {
+  const [fontsLoaded] = useFonts({
+    Roboto_400Regular,
+    Roboto_500Medium,
+    Roboto_700Bold,
+  });
+
+  if (fontsLoaded) {
+    SplashScreen.hideAsync();
+  }
+
   return (
-    <Tabs>
-      <Tabs.Screen
-        name="home/index"
-        options={{
-          title: "Home",
-          tabBarIcon: ({ color, size }) => (
-            <MaterialIcons name="home" size={size} color={color} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="task/index"
-        options={{
-          title: "Tarefas",
-          tabBarIcon: ({ color, size }) => (
-            <MaterialIcons name="task-alt" size={size} color={color} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="profile/index"
-        options={{
-          title: "Perfil",
-          tabBarIcon: ({ color, size }) => (
-            <MaterialIcons name="person" size={size} color={color} />
-          ),
-        }}
-      />
-    </Tabs>
+    <GestureHandlerRootView
+      style={{
+        flex: 1,
+      }}
+    >
+      <StatusBar backgroundColor="white" />
+      <Slot />
+    </GestureHandlerRootView>
   );
-};
-
-export default Layout;
+}
